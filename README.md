@@ -57,7 +57,56 @@ Untuk menjaga kepercayaan dan transparansi ekosistem jual-beli lokal:
 ### Encapsulation
 Encapsulation adalah proses menyembunyikan data (atribut) melalui modifikator private dan hanya memperbolehkan akses melalui method khusus (getter dan setter). Pada LOKA, konsep ini diterapkan secara ketat dengan menambahkan fungsionalitas validasi di dalam metode setter (misalnya memastikan format email memiliki '@' atau saldo tidak boleh minus), sehingga integritas dan keamanan data objek selalu terjaga sebelum diproses oleh sistem.
 
-(Kode)
+**Class `Pengguna`**: atribut `private`, setter yang memanggil validasi sebelum menyimpan nilai.
+
+```java
+public class Pengguna {
+    private String email;
+    private String password;
+    // ...
+
+    public String getEmail() { return email; }
+
+    public void setEmail(String email) {
+        if (validasiEmail(email)) {
+            this.email = email;
+        }
+    }
+
+    public boolean validasiEmail(String email) {
+        if (email != null && email.contains("@") && email.contains(".")) {
+            return true;
+        } else {
+            System.out.println("Peringatan: Format email tidak valid (harus mengandung '@' dan '.')!");
+            return false;
+        }
+    }
+}
+```
+
+**Class `Pembeli`**: validasi saldo agar tidak bernilai minus.
+
+```java
+public class Pembeli extends Pengguna {
+    private double saldo;
+    // ...
+
+    public void setSaldo(double saldo) {
+        if (validasiSaldoPembeli(saldo)) {
+            this.saldo = saldo;
+        }
+    }
+
+    public boolean validasiSaldoPembeli(double saldo) {
+        if (saldo >= 0) {
+            return true;
+        } else {
+            System.out.println("Peringatan: Saldo pembeli tidak boleh bernilai minus!");
+            return false;
+        }
+    }
+}
+```
 
 ### Inheritance
 Inheritance (Pewarisan) digunakan untuk mencegah duplikasi kode dengan cara mewariskan atribut dasar dari Super-class Pengguna (seperti ID, nama, email, dan sandi) kepada tiga Sub-class spesifik: Penjual, Pembeli, dan Pengelola. Melalui pemanggilan metode super() di dalam konstruktor masing-masing, Sub-class dapat menginisialisasi identitas dasarnya ke class induk sekaligus menambahkan atribut eksklusifnya sendiri, seperti namaToko untuk entitas bisnis Penjual, alamatPengiriman untuk kebutuhan belanja Pembeli, dan posisi otoritas (Admin/Verifikator) untuk manajemen Pengelola.
@@ -65,64 +114,106 @@ Inheritance (Pewarisan) digunakan untuk mencegah duplikasi kode dengan cara mewa
 #### Class Penjual
 Class ini mewarisi atribut identitas dasar dari Pengguna, namun ia mendefinisikan atribut yang secara eksklusif hanya dimiliki oleh entitas bisnis. Penjual memiliki namaToko, noIzinUsaha, dan saldo operasional toko yang ditambahkan ke dalam konstruktornya.
 
- (Kode)
+```java
+public class Penjual extends Pengguna {
+    private String namaToko;
+    private String noIzinUsaha;
+    private double saldo;
+    // ...
+
+    public Penjual(int idPengguna, String namaLengkap, String email, String password,
+                   String noTelpon, RolePengguna role, String namaToko, /* ... */
+                   double saldo, String noIzinUsaha, /* ... */) {
+
+        super(idPengguna, namaLengkap, email, password, noTelpon, role); // atribut warisan dari Pengguna
+
+        setNamaToko(namaToko);          // atribut khusus Penjual
+        setSaldo(saldo);
+        setNoIzinUsaha(noIzinUsaha);
+        // ...
+    }
+}
+```
 
 #### Class Pembeli
 Sama halnya dengan Penjual, Class Pembeli menggunakan extends Pengguna. Namun, bukan berfokus pada atribut bisnis, ia menambahkan atribut yang spesifik mendukung kegiatan belanja, seperti alamatPengiriman yang detail, saldo LOKA-Pay pribadi, dan pin keamanan transaksi.
 
-(Kode)
+```java
+public class Pembeli extends Pengguna {
+    private String alamatPengiriman;
+    private double saldo;
+    private String pin;
+    // ...
+
+    public Pembeli(int idPengguna, String namaLengkap, String email, String password,
+                   String noTelpon, RolePengguna role, Date tanggalLahir, /* ... */
+                   String alamatPengiriman, double saldo, String pin, /* ... */) {
+
+        super(idPengguna, namaLengkap, email, password, noTelpon, role); // atribut warisan dari Pengguna
+
+        this.alamatPengiriman = alamatPengiriman;   // atribut khusus Pembeli
+        setSaldo(saldo);
+        setPin(pin);
+        // ...
+    }
+}
+```
 
 #### Class Pengelola (Admin/Verifikator)
 Berbeda dengan Pembeli atau Penjual yang terlibat langsung dalam transaksi komersial, Class Pengelola didesain khusus untuk manajemen sistem di balik layar. Setelah mewarisi kredensial dasar dari Pengguna, Class ini menambahkan satu atribut otorisasi khusus yaitu posisi (menggunakan tipe data Enum PosisiPengelola). Atribut ini mendefinisikan pembagian wewenang yang tegas antara seorang Admin (pemantau analitik) dan seorang Verifikator (pemberi validasi).
 
-    package model;
-    
-    import enums.PosisiPengelola;
-    import enums.RolePengguna;
-    
-    public class Pengelola extends Pengguna {
-        private PosisiPengelola posisi;
-    
-        public Pengelola() {}
-    
-        public Pengelola(int idPengguna, String namaLengkap, String email, String password, String noTelpon, RolePengguna role, PosisiPengelola posisi) {
-            super(idPengguna, namaLengkap, email, password, noTelpon, role);
-            setPosisi(posisi);
-        }
-    
-        public PosisiPengelola getPosisi() { 
-            return posisi; 
-        }
-        
-        public void setPosisi(PosisiPengelola posisi) {
-            if (validasiPosisi(posisi)) {
-                this.posisi = posisi;
-            }
-        }
-    
-        public boolean validasiPosisi(PosisiPengelola posisi) {
-            if (posisi != null) {
-                return true;
-            } else {
-                System.out.println(" Posisi pengelola tidak boleh kosong!");
-                return false;
-            }
-        }
+ ```java
+public class Pengelola extends Pengguna {
+    private PosisiPengelola posisi;   // atribut khusus Pengelola
+
+    public Pengelola(int idPengguna, String namaLengkap, String email, String password,
+                     String noTelpon, RolePengguna role, PosisiPengelola posisi) {
+
+        super(idPengguna, namaLengkap, email, password, noTelpon, role); // atribut warisan dari Pengguna
+        setPosisi(posisi);
     }
-    }
+}
+```
 
 ### Abstraction
 Abstraction (Abstraksi) diterapkan untuk menyembunyikan detail kompleksitas data mentah dan membatasi input pengguna hanya pada fungsionalitas esensial yang distandardisasi menggunakan tipe data Enum. Melalui penerapan Enum seperti StatusPesanan, aplikasi menyembunyikan manipulasi tipe string mentah dan menciptakan sebuah kontrak konstan yang mencegah kesalahan pengetikan (human-error), sehingga integritas status operasional di dalam database selalu terjamin konsistensinya.
 
-    package enums;
-    
-    public enum StatusPesanan {
-        Diproses,
-        Dikirim,
-        Selesai,
-        Pengembalian,
-        Dikembalikan
-    }
+```java
+package enums;
+
+public enum StatusPesanan {
+    Diproses,
+    Dikirim,
+    Selesai,
+    Pengembalian,
+    Dikembalikan
+}
+```
 
 ### Polymorphism
 Polymorphism (Polimorfisme) memungkinkan satu antarmuka atau metode yang sama digunakan untuk menangani berbagai bentuk objek yang berbeda secara dinamis. Dalam sistem LOKA, konsep ini diimplementasikan pada metode login di Class LokaControl, di mana metode tersebut memiliki wujud kembalian abstrak berupa Super-class Pengguna, namun secara fleksibel dapat menelusuri, memeriksa, dan mengembalikan wujud asli objek yang berhasil login, baik itu sebagai objek turunan Pembeli, Penjual, maupun Pengelola.
+
+```java
+public Pengguna login(String email, String password) {   // tipe kembalian: Pengguna (super-class)
+
+    for (Pembeli p : pembeliDAO.getAllPembeli()) {
+        if (p.getEmail().equalsIgnoreCase(email) && p.getPassword().equals(password)) {
+            return p;   // mengembalikan objek Pembeli
+        }
+    }
+
+    for (Penjual p : penjualDAO.getAllPenjual()) {
+        if (p.getEmail().equalsIgnoreCase(email) && p.getPassword().equals(password)) {
+            return p;   // mengembalikan objek Penjual
+        }
+    }
+
+    for (Pengelola p : pengelolaDAO.getAllPengelola()) {
+        if (p.getEmail().equalsIgnoreCase(email) && p.getPassword().equals(password)) {
+            return p;   // mengembalikan objek Pengelola
+        }
+    }
+
+    return null;
+}
+```

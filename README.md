@@ -356,14 +356,22 @@ public List<Produk> ambilSemuaProduk(int idPenjual) {
 
 ## Cara Penggunaan Program ─ ★ ˙ ̟ !!
 
-1. **Clone repository**
+1. **Clone Repository**
 ```bash
-   git clone <url-repository>
+   git clone ...
 ```
-2. **Siapkan database MySQL**: aktifkan **Laragon** (*Start All*), buat database loka, lalu impor file `loka.sql`.
-3. **Atur koneksi database**: sesuaikan *host*, *username*, dan *password* pada class koneksi.
-4. **Jalankan aplikasi**: buka project di NetBeans, lakukan *Clean and Build*, lalu *Run* (atau gunakan `mvn clean install`).
-5. **Login** menggunakan akun Pembeli, Penjual, atau Pengelola sesuai peran yang ingin dicoba.
+ 
+2. **Persiapan Database MySQL**
+   - Jalankan layanan MySQL melalui Laragon (*Mulai Semua*).
+   - Buat database baru bernama `loka` di phpMyAdmin.
+   - Import file database `loka.sql` ke dalam database `loka`.
+3. **Konfigurasi Koneksi Database**
+   - Pastikan pengaturan `URL`, `USER`, dan `PASS` di dalam file `src/main/java/config/Koneksi.java` telah sesuai dengan konfigurasi MySQL lokal Anda (default: `jdbc:mysql://localhost:3306/loka`, user: `root`, password: `""`).
+4. **Menjalankan Aplikasi**
+   - Buka proyek LOKA menggunakan Apache NetBeans IDE.
+   - Klik kanan pada proyek, pilih **Clean and Build**.
+   - Tekan **Run Project** untuk menjalankan class utama.
+   
 TAROH GUI DISINI YAAAA
 
 ---

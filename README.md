@@ -2,6 +2,7 @@
 
 # 🛍️🏪 LOKA
 ### Lapak Online Komunitas Lokal
+<img width="400" height="400" alt="LOGO LOKA" src="https://github.com/user-attachments/assets/77946f2b-7084-4b8c-9f11-523481071734" />
 
 *Marketplace digital untuk memberdayakan UMKM lokal di Kota Samarinda*
 
@@ -355,7 +356,14 @@ public List<Produk> ambilSemuaProduk(int idPenjual) {
 
 ## Cara Penggunaan Program ─ ★ ˙ ̟ !!
 
-
+1. **Clone repository**
+```bash
+   git clone <url-repository>
+```
+2. **Siapkan database MySQL**: aktifkan **Laragon** (*Start All*), buat database loka, lalu impor file `loka.sql`.
+3. **Atur koneksi database**: sesuaikan *host*, *username*, dan *password* pada class koneksi.
+4. **Jalankan aplikasi**: buka project di NetBeans, lakukan *Clean and Build*, lalu *Run* (atau gunakan `mvn clean install`).
+5. **Login** menggunakan akun Pembeli, Penjual, atau Pengelola sesuai peran yang ingin dicoba.
 TAROH GUI DISINI YAAAA
 
 ---

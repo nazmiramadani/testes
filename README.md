@@ -231,9 +231,9 @@ public Pengguna login(String email, String password) {   // tipe kembalian: Peng
 ## Cara Penggunaan Program
 
 ## Kontributor
-| Nama | NIM | KELAS |
-|------|-----|--------------|
-| Nazmi Ramadani | 2509116031 | A |
-| Atha Rina Sarwahita | 2509116047 | B |
-| Naisyla Auliya Rahmi Putri | 2509116078 | B |
-| Qonitah Khansa' Ayu Madani A | 2509116113 | C |
+| NO | Nama | NIM | KELAS |
+|----|------|-----|--------------|
+| 1 | Nazmi Ramadani | 2509116031 | A |
+| 2 | Atha Rina Sarwahita | 2509116047 | B |
+| 3 | Naisyla Auliya Rahmi Putri | 2509116078 | B |
+| 4 | Qonitah Khansa' Ayu Madani A | 2509116113 | C |

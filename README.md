@@ -5,11 +5,6 @@
 
 *Marketplace digital untuk memberdayakan UMKM lokal di Kota Samarinda*
 
-![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
-![Maven](https://img.shields.io/badge/Apache_Maven-C71A36?style=for-the-badge&logo=apachemaven&logoColor=white)
-![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
-![Swing](https://img.shields.io/badge/Java_Swing-GUI-1f6feb?style=for-the-badge)
-
 </div>
 
 ---

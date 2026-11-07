@@ -19,8 +19,8 @@ Sistem ini mengimplementasikan keamanan berlapis dengan membagi pengguna ke dala
 
 * Pembeli: Memiliki akses penuh ke etalase produk, dapat menambahkan barang ke keranjang, melakukan pengisian saldo dompet digital (Top-Up), dan melacak status barang yang dibeli.
 
-2. Sistem Transaksi Cerdas & Kalkulasi Logistik (Smart Checkout)
-Proses pemesanan barang (Checkout) tidak dilakukan secara manual, melainkan diotomatisasi penuh oleh logika sistem (di dalam LokaControl):
+2. Sistem Transaksi Cerdas & Kalkulasi Logistik
+Proses pemesanan barang (Checkout) tidak dilakukan secara manual, melainkan diotomatisasi penuh oleh logika sistem:
 
 * Kalkulasi Ongkos Kirim Dinamis: Sistem otomatis mengalkulasi biaya kirim berdasarkan input jarak (km). Tarif yang ditetapkan adalah Rp ... per kilometer, dengan batas tarif ongkos kirim minimal sebesar Rp ....
 
@@ -39,5 +39,15 @@ Sistem memberikan keleluasaan bagi pengguna untuk memanipulasi data operasional 
 
 * Manajemen Keranjang (Pembeli): Pembeli dapat menimbun barang di dalam keranjang, menelusuri isi keranjang, dan menghapus barang dari keranjang jika tidak jadi membeli. Setelah proses checkout dari keranjang berhasil, sistem otomatis membersihkan (Delete) produk tersebut dari keranjang pembeli.
 
+4. Layanan Pasca-Pembelian (Pengembalian & Ulasan)
+Untuk menjaga kepercayaan dan transparansi ekosistem jual-beli lokal:
 
+* Sistem Pengembalian: Jika barang rusak atau tidak sesuai, pembeli dapat mengajukan form retur yang berisi alasan komplain dan nominal dana yang diminta. Status pengembalian awalnya adalah "Diproses", kemudian penjual memiliki otoritas untuk memperbarui statusnya menjadi "Pengembalian Disetuju" atau "Pengembalian Ditolak".
 
+* Rating & Ulasan: Setelah pesanan selesai, pembeli dapat memberikan umpan balik publik berupa teks komentar dan Rating (dengan skala divalidasi antara 1.0 hingga 5.0 bintang) untuk membangun reputasi toko UMKM terkait.
+
+5. Komunikasi & Pembayaran Internal
+
+* Pesan Pribadi: Tersedia modul pertukaran pesan yang memungkinkan pembeli melakukan konsultasi produk secara langsung ke penjual. Sistem mencatat waktu pengiriman dan melacak status pesan (Sudah Dibaca / Belum Dibaca).
+
+* Top-Up LOKA-Pay: Sistem dompet digital internal di mana pembeli dapat mengisi saldo (diinput dan divalidasi tidak boleh minus) yang nantinya menjadi satu-satunya metode pembayaran sah dan terintegrasi di dalam aplikasi LOKA.

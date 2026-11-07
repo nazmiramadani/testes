@@ -67,7 +67,7 @@ Untuk menjaga kepercayaan dan transparansi ekosistem jual-beli lokal:
 
 * Relational: <img width="5175" height="2707" alt="LOKA_Relational" src="https://github.com/user-attachments/assets/7b246e96-e853-427a-a95a-3ad59ab907ed" />
 
-* Flowchart & Use case: 
+* Flowchart & Use case: https://drive.google.com/file/d/17GgE9G_xQwHs0BnOM0JndjFk6LYqK0E1/view
 
 ## Struktur Folder/Package
 

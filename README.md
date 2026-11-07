@@ -370,7 +370,7 @@ public List<Produk> ambilSemuaProduk(int idPenjual) {
 4. **Menjalankan Aplikasi**
    - Buka proyek LOKA menggunakan Apache NetBeans IDE.
    - Klik kanan pada proyek, pilih **Clean and Build**.
-   - Tekan **Run Project** untuk menjalankan class utama.
+   - Tekan **Run Project** untuk menjalankan Program.
    
 TAROH GUI DISINI YAAAA
 

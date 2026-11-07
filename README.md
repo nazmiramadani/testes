@@ -5,11 +5,6 @@
 
 *Marketplace digital untuk memberdayakan UMKM lokal di Kota Samarinda*
 
-![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
-![Maven](https://img.shields.io/badge/Apache_Maven-C71A36?style=for-the-badge&logo=apachemaven&logoColor=white)
-![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
-![Swing](https://img.shields.io/badge/Java_Swing-GUI-1f6feb?style=for-the-badge)
-
 </div>
 
 ---
@@ -111,25 +106,12 @@ Untuk menjaga kepercayaan dan transparansi ekosistem jual-beli lokal:
 
 **Flowchart & Use Case**
 
-<!-- TODO: tempel gambar flowchart dan use case di sini -->
-*(Segera ditambahkan)*
+https://drive.google.com/drive/folders/1toUlE2J9xxgxuJ68TF_lEPJt3u2UXHNX?usp=drive_link
 
 ---
 
 ## Struktur Folder/Package ─ ★ ˙ ̟ !!
 
-```text
-LOKA/
-├── pom.xml
-└── src/main/java/
-    ├── model/      → Pengguna, Pembeli, Penjual, Pengelola, Produk, Keranjang,
-    │                 Pesanan, DetailPesanan, Pengembalian, Pesan, TopUp, Ulasan
-    ├── enums/      → RolePengguna, StatusAkun, StatusVerifikasi, StatusPesanan,
-    │                 StatusPengembalian, PosisiPengelola, dll.
-    ├── dao/        → PembeliDAO, PenjualDAO, PengelolaDAO, ProdukDAO, PesananDAO, dll.
-    ├── controll/   → LokaControl (logika bisnis & checkout)
-    └── view/       → Form-form Java Swing   (sesuaikan dengan nama package GUI)
-```
 
 ---
 
@@ -141,41 +123,6 @@ LOKA/
 | Inheritance | `Pembeli`, `Penjual`, `Pengelola` mewarisi `Pengguna` | package `model` |
 | Abstraction | *Abstract class* `Pengguna` dan tipe data `enum` | `Pengguna`, package `enums` |
 | Polymorphism | *Method overriding* `getInfoDasbor()` dan *method overloading* `ambilSemuaProduk()` | `Pengguna` dan subclass, `LokaControl` |
-
-Hierarki class pada sistem LOKA:
-
-```mermaid
-classDiagram
-    class Pengguna {
-        <<abstract>>
-        -int idPengguna
-        -String namaLengkap
-        -String email
-        -String password
-        -String noTelpon
-        -RolePengguna role
-        +getInfoDasbor() String*
-    }
-    class Pembeli {
-        -String alamatPengiriman
-        -double saldo
-        -String pin
-        +getInfoDasbor() String
-    }
-    class Penjual {
-        -String namaToko
-        -String noIzinUsaha
-        -double saldo
-        +getInfoDasbor() String
-    }
-    class Pengelola {
-        -PosisiPengelola posisi
-        +getInfoDasbor() String
-    }
-    Pengguna <|-- Pembeli
-    Pengguna <|-- Penjual
-    Pengguna <|-- Pengelola
-```
 
 ### Encapsulation
 
@@ -408,16 +355,8 @@ public List<Produk> ambilSemuaProduk(int idPenjual) {
 
 ## Cara Penggunaan Program ─ ★ ˙ ̟ !!
 
-<!-- TODO: sesuaikan langkah-langkah di bawah dengan project kalian -->
 
-1. **Clone repository**
-   ```bash
-   git clone <url-repository>
-   ```
-2. **Siapkan database MySQL**: aktifkan **Laragon** (*Start All*), buat database, lalu impor file `.sql` milik project.
-3. **Atur koneksi database**: sesuaikan *host*, *username*, dan *password* pada class koneksi.
-4. **Jalankan aplikasi**: buka project di NetBeans, lakukan *Clean and Build*, lalu *Run* (atau gunakan `mvn clean install`).
-5. **Login** menggunakan akun Pembeli, Penjual, atau Pengelola sesuai peran yang ingin dicoba.
+TAROH GUI DISINI YAAAA
 
 ---
 

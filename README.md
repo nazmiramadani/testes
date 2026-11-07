@@ -80,3 +80,63 @@ Encapsulation adalah proses menyembunyikan data (atribut) dan hanya memperbolehk
               }
           }
       }
+
+### Inheritance
+Inheritance adalah kemampuan Class untuk mewarisi atribut dan metode dari Class induk, sehingga menghindari duplikasi penulisan kode. Pada sistem LOKA, hierarki pengguna dipecah menjadi tiga entitas spesifik, yaitu Pembeli, Penjual, dan Pengelola yang semuanya mewarisi atribut dasar (seperti idPengguna, namaLengkap, email, dan password) dari Class utama Pengguna menggunakan kata kunci extends.
+
+#### Class Penjual
+Mewarisi data dasar pengguna dan menambahkan atribut khusus bisnis seperti namaToko, noIzinUsaha, dan saldo toko.
+
+    package model;
+    import enums.RolePengguna;
+    
+    public class Penjual extends Pengguna {
+        private String namaToko;
+        private double saldo;
+        private String noIzinUsaha;
+    
+        public Penjual(int idPengguna, String namaLengkap, String email, String password, String noTelpon, RolePengguna role, String namaToko, double saldo, String noIzinUsaha /*...*/) {
+            // Memanggil konstruktor atribut dasar dari class Pengguna
+            super(idPengguna, namaLengkap, email, password, noTelpon, role);
+            setNamaToko(namaToko);
+            setSaldo(saldo);
+            setNoIzinUsaha(noIzinUsaha);
+        }
+    }
+
+#### Class Pembeli
+Mewarisi data dasar pengguna dan menambahkan atribut khusus belanja seperti alamatPengiriman, saldo dompet pembeli, dan pin keamanan.
+
+    package model;
+    import enums.RolePengguna;
+    
+    public class Pembeli extends Pengguna {
+        private String alamatPengiriman;
+        private double saldo;
+        private String pin;
+    
+        public Pembeli(int idPengguna, String namaLengkap, String email, String password, String noTelpon, RolePengguna role, String alamatPengiriman, double saldo, String pin /*...*/) {
+            super(idPengguna, namaLengkap, email, password, noTelpon, role);
+            this.alamatPengiriman = alamatPengiriman;
+            setSaldo(saldo);
+            setPin(pin);
+        }
+    }
+
+#### Class Pengelola (Admin/Verifikator)
+Mewarisi data dasar pengguna dan menambahkan atribut otorisasi yaitu posisi pengelola.
+
+    package model;
+    import enums.PosisiPengelola;
+    import enums.RolePengguna;
+    
+    public class Pengelola extends Pengguna {
+        private PosisiPengelola posisi;
+    
+        public Pengelola(int idPengguna, String namaLengkap, String email, String password, String noTelpon, RolePengguna role, PosisiPengelola posisi) {
+            super(idPengguna, namaLengkap, email, password, noTelpon, role);
+            setPosisi(posisi);
+        }
+    }
+
+

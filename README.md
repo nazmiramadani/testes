@@ -231,7 +231,7 @@ public Pengguna login(String email, String password) {   // tipe kembalian: Peng
 ## Cara Penggunaan Program
 
 ## Kontributor
-| NO | Nama | NIM | KELAS |
+| NO | NAMA | NIM | KELAS |
 |----|------|-----|--------------|
 | 1 | Nazmi Ramadani | 2509116031 | A |
 | 2 | Atha Rina Sarwahita | 2509116047 | B |

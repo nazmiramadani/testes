@@ -51,6 +51,15 @@ Untuk menjaga kepercayaan dan transparansi ekosistem jual-beli lokal:
 * Top-Up LOKA-Pay: Sistem dompet digital internal di mana pembeli dapat mengisi saldo (diinput dan divalidasi tidak boleh minus) yang nantinya menjadi satu-satunya metode pembayaran sah dan terintegrasi di dalam aplikasi LOKA.
 
 ## Tech Stack
+| KATEGORI | TEKNOLOGI |
+|----------|-----------|
+| Bahasa Pemrograman | hhhh |
+| Build Automation Tool |  |
+| Framework GUI |  |
+| Database |  |
+| Library/Driver |  |
+| Arsitektur Sistem |  |
+|Tools Pengembangan |  |
 
 ## Perancangan Sistem
 

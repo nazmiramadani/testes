@@ -54,11 +54,11 @@ Untuk menjaga kepercayaan dan transparansi ekosistem jual-beli lokal:
 
 ## Perancangan Sistem
 
-* ERD:
+* ERD: <img width="2057" height="1919" alt="LOKA_Logical" src="https://github.com/user-attachments/assets/aeee1712-01e1-466a-9726-e27587923f7e" />
 
-* Relational:
+* Relational: <img width="5175" height="2707" alt="LOKA_Relational" src="https://github.com/user-attachments/assets/7b246e96-e853-427a-a95a-3ad59ab907ed" />
 
-* Flowchart & Use case:
+* Flowchart & Use case: 
 
 ## Struktur Folder/Package
 

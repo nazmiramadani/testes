@@ -10,32 +10,34 @@ Flow Chart & Use Case:
 
 Berikut adalah fitur–fitur utama dalam sistem LOKA:
 
-1. Sistem Manajemen Pengguna
-Fitur ini digunakan untuk membagi peran dan otentikasi secara dinamis ke dalam 3 jenis aktor:
+1. Autentikasi & Manajemen Hak Akses
+Sistem ini mengimplementasikan keamanan berlapis dengan membagi pengguna ke dalam 3 entitas (aktor) utama yang memiliki hak akses (privileges) berbeda:
 
-* Pengelola (Verifikator/Admin): Mengawasi analitik utama laporan, memverifikasi akun penjual (izin buka toko), memverifikasi perizinan produk, serta memantau data pengembalian.
+* Pengelola (Admin & Verifikator): Bertindak sebagai pengawas ekosistem. Verifikator bertugas memverifikasi pendaftaran toko UMKM baru dan menyetujui/menolak izin jual dari sebuah produk. Admin layanan dapat melihat analitik laporan pendapatan (total bayar) seluruh transaksi berdasarkan periode waktu tertentu.
 
-* Penjual (UMKM): Mengelola profil toko, menambah/mengubah/menghapus katalog produk, mengatur stok, dan memproses pesanan masuk dari pembeli.
+* Penjual (UMKM): Memiliki dasbor khusus untuk mendaftarkan nama toko & nomor izin usaha, menambahkan produk ke katalog, memperbarui ketersediaan stok, dan menangani pesanan masuk (mengubah status menjadi "Dikirim", "Diproses", "Selesai", "Pengembalian", dan "Dikembalikan").
 
-* Pembeli: Mencari produk, mengelola keranjang belanja, melakukan Top Up saldo LOKA-Pay, dan melacak status pengiriman.
+* Pembeli: Memiliki akses penuh ke etalase produk, dapat menambahkan barang ke keranjang, melakukan pengisian saldo dompet digital (Top-Up), dan melacak status barang yang dibeli.
 
-2. Sistem Transaksi & Ongkos Kirim Otomatis
-Fitur Transaksi memungkinkan pembeli melakukan pembelian dengan kalkulasi biaya yang cerdas dan terotomatisasi.
+2. Sistem Transaksi Cerdas & Kalkulasi Logistik (Smart Checkout)
+Proses pemesanan barang (Checkout) tidak dilakukan secara manual, melainkan diotomatisasi penuh oleh logika sistem (di dalam LokaControl):
 
-* Sistem akan otomatis menghitung tarif ongkos kirim berdasarkan jarak (Tarif Rp ... per km dengan minimal Rp ...).
+* Kalkulasi Ongkos Kirim Dinamis: Sistem otomatis mengalkulasi biaya kirim berdasarkan input jarak (km). Tarif yang ditetapkan adalah Rp ... per kilometer, dengan batas tarif ongkos kirim minimal sebesar Rp ....
 
-* Validasi ketersediaan stok produk dan kecukupan saldo dompet digital pembeli sebelum pesanan dilakukan.
+* Validasi End-to-End: Sebelum transaksi dicatat, sistem akan mengecek: 
 
-* Pemotongan saldo dan pengurangan stok real-time saat checkout berhasil.
+  * Apakah stok produk mencukupi jumlah yang ingin dibeli? 
 
-3. CRUD Data Interaktif (Create, Read, Update, Delete)
-Memungkinkan pengguna melakukan pengelolaan data secara fleksibel.
+  * Apakah saldo LOKA-Pay pembeli cukup untuk membayar total belanja + ongkos kirim?
 
-* Create: Menambahkan produk ke katalog atau item ke keranjang dan membuat akun baru.
+* Sinkronisasi Otomatis: Apabila validasi berhasil, sistem akan langsung membuat data Pesanan dan DetailPesanan, lalu secara real-time memotong saldo pembeli dan mengurangi ketersediaan stok produk di database penjual.
 
-* Read: Menampilkan daftar produk (katalog), profil pengguna, keranjang, dan riwayat pesanan.
+3. Manajemen Data Interaktif Terpusat (CRUD System)
+Sistem memberikan keleluasaan bagi pengguna untuk memanipulasi data operasional (Create, Read, Update, Delete) sesuai porsinya:
 
-* Update: Mengubah status pesanan dari "Diproses", "Dikirim", "Selesai", "Pengembalian", dan "Dikembalikan" serta mengubah detail produk.
+* Manajemen Katalog (Penjual): UMKM dapat mendaftarkan produk baru (Create), melihat daftar produk mereka (Read), mengubah harga/deskripsi/gambar/stok produk (Update), serta menghapus produk yang sudah tidak dijual (Delete).
 
-* Delete: Menghapus produk dari katalog atau membersihkan item di keranjang.
+* Manajemen Keranjang (Pembeli): Pembeli dapat menimbun barang di dalam keranjang, menelusuri isi keranjang, dan menghapus barang dari keranjang jika tidak jadi membeli. Setelah proses checkout dari keranjang berhasil, sistem otomatis membersihkan (Delete) produk tersebut dari keranjang pembeli.
+
+
 

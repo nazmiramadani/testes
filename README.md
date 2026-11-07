@@ -59,33 +59,135 @@ Untuk menjaga kepercayaan dan transparansi ekosistem jual-beli lokal:
 Encapsulation adalah proses menyembunyikan data (atribut) dan hanya memperbolehkan akses melalui method khusus (getter dan setter). LOKA juga menambahkan fungsi validasi ketat di dalam setter (misalnya saldo tidak boleh minus, email harus mengandung '@') agar data tetap valid.
 
 
-      package model;
-      public class Pengguna {
-          private String email;
-          
-          public String getEmail() { return email; }
-          
-          public void setEmail(String email) {
-              if (validasiEmail(email)) {
-                  this.email = email;
-              }
-          }
-      
-          public boolean validasiEmail(String email) {
-              if (email != null && email.contains("@") && email.contains(".")) {
-                  return true;
-              } else {
-                  System.out.println("Peringatan: Format email tidak valid!");
-                  return false;
-              }
-          }
-      }
+    package model;
+    
+    import enums.RolePengguna;
+    
+    public class Pengguna {
+        private int idPengguna;
+        private String namaLengkap;
+        private String email;
+        private String password;
+        private String noTelpon;
+        private RolePengguna role;
+    
+        public Pengguna() {}
+    
+        public Pengguna(int idPengguna, String namaLengkap, String email, String password, String noTelpon, RolePengguna role) {
+            setIdPengguna(idPengguna);
+            setNamaLengkap(namaLengkap);
+            setEmail(email);
+            setPassword(password);
+            setNoTelpon(noTelpon);
+            this.role = role;
+        }
+    
+        public int getIdPengguna() { 
+            return idPengguna; 
+        }
+        
+        public void setIdPengguna(int idPengguna) {
+            if (validasiIdPengguna(idPengguna)) {
+                this.idPengguna = idPengguna;
+            }
+        }
+    
+        public String getNamaLengkap() { 
+            return namaLengkap; 
+        }
+        
+        public void setNamaLengkap(String namaLengkap) {
+            if (validasiNamaLengkap(namaLengkap)) {
+                this.namaLengkap = namaLengkap.trim();
+            }
+        }
+    
+        public String getEmail() { return email; }
+        public void setEmail(String email) {
+            if (validasiEmail(email)) {
+                this.email = email;
+            }
+        }
+    
+        public String getPassword() { 
+            return password; 
+        }
+        
+        public void setPassword(String password) {
+            if (validasiPassword(password)) {
+                this.password = password;
+            }
+        }
+    
+        public String getNoTelpon() { 
+            return noTelpon; 
+        }
+        
+        public void setNoTelpon(String noTelpon) {
+            if (validasiNoTelpon(noTelpon)) {
+                this.noTelpon = noTelpon;
+            }
+        }
+    
+        public RolePengguna getRole() { 
+            return role; 
+        }
+        
+        public void setRole(RolePengguna role) { 
+            this.role = role; 
+        }
+    
+        public boolean validasiIdPengguna(int id) {
+            if (id > 0) {
+                return true;
+            } else {
+                System.out.println("Peringatan: ID pengguna harus lebih dari 0!");
+                return false;
+            }
+        }
+    
+        public boolean validasiNamaLengkap(String nama) {
+            if (nama != null && !nama.trim().isEmpty()) {
+                return true;
+            } else {
+                System.out.println("Peringatan: Nama lengkap tidak boleh kosong!");
+                return false;
+            }
+        }
+    
+        public boolean validasiEmail(String email) {
+            if (email != null && email.contains("@") && email.contains(".")) {
+                return true;
+            } else {
+                System.out.println("Peringatan: Format email tidak valid (harus mengandung '@' dan '.')!");
+                return false;
+            }
+        }
+    
+        public boolean validasiPassword(String password) {
+            if (password != null && password.length() >= 8) {
+                return true;
+            } else {
+                System.out.println("Peringatan: Password minimal harus 8 karakter!");
+                return false;
+            }
+        }
+    
+        public boolean validasiNoTelpon(String noTelpon) {
+            if (noTelpon != null && noTelpon.matches("[0-9]+") && noTelpon.length() >= 11) {
+                return true;
+            } else {
+                System.out.println("Peringatan: Nomor telepon hanya boleh berisi angka dan minimal 11 digit!");
+                return false;
+            }
+        }
+    }
 
 ### Inheritance
 Inheritance adalah kemampuan Class untuk mewarisi atribut dan metode dari Class induk, sehingga menghindari duplikasi penulisan kode. Pada sistem LOKA, hierarki pengguna dipecah menjadi tiga entitas spesifik, yaitu Pembeli, Penjual, dan Pengelola yang semuanya mewarisi atribut dasar (seperti idPengguna, namaLengkap, email, dan password) dari Class utama Pengguna menggunakan kata kunci extends.
 
 #### Class Penjual
-Mewarisi data dasar pengguna dan menambahkan atribut khusus bisnis seperti namaToko, noIzinUsaha, dan saldo toko.
+Class ini mewarisi atribut identitas dasar dari Pengguna, namun ia mendefinisikan atribut yang secara eksklusif hanya dimiliki oleh entitas bisnis. Penjual memiliki namaToko, noIzinUsaha, dan saldo operasional toko yang ditambahkan ke dalam konstruktornya.
 
     package model;
     
@@ -260,7 +362,7 @@ Mewarisi data dasar pengguna dan menambahkan atribut khusus bisnis seperti namaT
     }
 
 #### Class Pembeli
-Mewarisi data dasar pengguna dan menambahkan atribut khusus belanja seperti alamatPengiriman, saldo dompet pembeli, dan pin keamanan.
+Sama halnya dengan Penjual, Class Pembeli menggunakan extends Pengguna. Namun, bukan berfokus pada atribut bisnis, ia menambahkan atribut yang spesifik mendukung kegiatan belanja, seperti alamatPengiriman yang detail, saldo LOKA-Pay pribadi, dan pin keamanan transaksi.
 
     package model;
     
@@ -402,7 +504,7 @@ Mewarisi data dasar pengguna dan menambahkan atribut khusus belanja seperti alam
     }
 
 #### Class Pengelola (Admin/Verifikator)
-Mewarisi data dasar pengguna dan menambahkan atribut otorisasi yaitu posisi pengelola.
+Berbeda dengan Pembeli atau Penjual yang terlibat langsung dalam transaksi komersial, Class Pengelola didesain khusus untuk manajemen sistem di balik layar. Setelah mewarisi kredensial dasar dari Pengguna, Class ini menambahkan satu atribut otorisasi khusus yaitu posisi (menggunakan tipe data Enum PosisiPengelola). Atribut ini mendefinisikan pembagian wewenang yang tegas antara seorang Admin (pemantau analitik) dan seorang Verifikator (pemberi validasi).
 
     package model;
     
@@ -440,4 +542,4 @@ Mewarisi data dasar pengguna dan menambahkan atribut otorisasi yaitu posisi peng
     }
     }
 
-
+### Abstraction

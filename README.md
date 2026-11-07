@@ -58,24 +58,25 @@ Untuk menjaga kepercayaan dan transparansi ekosistem jual-beli lokal:
 
 Encapsulation adalah proses menyembunyikan data (atribut) dan hanya memperbolehkan akses melalui method khusus (getter dan setter). LOKA juga menambahkan fungsi validasi ketat di dalam setter (misalnya saldo tidak boleh minus, email harus mengandung '@') agar data tetap valid.
 
-package model;
-public class Pengguna {
-    private String email;
-    
-    public String getEmail() { return email; }
-    
-    public void setEmail(String email) {
-        if (validasiEmail(email)) {
-            this.email = email;
-        }
-    }
 
-    public boolean validasiEmail(String email) {
-        if (email != null && email.contains("@") && email.contains(".")) {
-            return true;
-        } else {
-            System.out.println("Peringatan: Format email tidak valid!");
-            return false;
-        }
-    }
-}
+      package model;
+      public class Pengguna {
+          private String email;
+          
+          public String getEmail() { return email; }
+          
+          public void setEmail(String email) {
+              if (validasiEmail(email)) {
+                  this.email = email;
+              }
+          }
+      
+          public boolean validasiEmail(String email) {
+              if (email != null && email.contains("@") && email.contains(".")) {
+                  return true;
+              } else {
+                  System.out.println("Peringatan: Format email tidak valid!");
+                  return false;
+              }
+          }
+      }

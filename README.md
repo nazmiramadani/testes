@@ -53,10 +53,10 @@ Untuk menjaga kepercayaan dan transparansi ekosistem jual-beli lokal:
 ## Tech Stack
 | KATEGORI | TEKNOLOGI |
 |----------|-----------|
-| Bahasa Pemrograman | hhhh |
-| Build Automation Tool |  |
-| Framework GUI |  |
-| Database |  |
+| Bahasa Pemrograman | Java |
+| Build Automation Tool | Apache Maven |
+| Framework GUI | Java Swing |
+| Database | MySQL |
 | Library/Driver |  |
 | Arsitektur Sistem |  |
 |Tools Pengembangan |  |

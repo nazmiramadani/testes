@@ -4,9 +4,7 @@
 
 LOKA merupakan sebuah platform marketplace digital yang didedikasikan secara eksklusif untuk pemberdayaan Usaha Mikro, Kecil, dan Menengah (UMKM) lokal di wilayah Kota Samarinda. Platform ini dirancang untuk mengatasi keterbatasan jangkauan pemasaran dan mengelola operasional bisnis secara terstruktur melalui sistem digital. Dengan fitur dasbor penjual, pencarian katalog produk, integrasi pembayaran digital, hingga kalkulasi ongkos kirim berdasarkan jarak, LOKA memfasilitasi pertemuan antara penjual dan pembeli secara efisien. Pengembangan sistem ini sejalan dengan komitmen terhadap Sustainable Development Goals (SDGs) poin 8 (Pekerjaan Layak & Pertumbuhan Ekonomi), 9 (Industri, Inovasi, & Infrastruktur), dan 12 (Konsumsi & Produksi yang Bertanggung Jawab).
 
-Flow Chart & Use Case:
-
-## Fitur Program
+## Fitur Utama Program
 
 Berikut adalah fitur–fitur utama dalam sistem LOKA:
 
@@ -51,6 +49,18 @@ Untuk menjaga kepercayaan dan transparansi ekosistem jual-beli lokal:
 * Pesan Pribadi: Tersedia modul pertukaran pesan yang memungkinkan pembeli melakukan konsultasi produk secara langsung ke penjual. Sistem mencatat waktu pengiriman dan melacak status pesan (Sudah Dibaca / Belum Dibaca).
 
 * Top-Up LOKA-Pay: Sistem dompet digital internal di mana pembeli dapat mengisi saldo (diinput dan divalidasi tidak boleh minus) yang nantinya menjadi satu-satunya metode pembayaran sah dan terintegrasi di dalam aplikasi LOKA.
+
+## Tech Stack
+
+## Perancangan Sistem
+
+* ERD:
+
+* Relational:
+
+* Flowchart & Use case:
+
+## Struktur Folder/Package
 
 ## Penerapan OOP
 
@@ -217,3 +227,7 @@ public Pengguna login(String email, String password) {   // tipe kembalian: Peng
     return null;
 }
 ```
+
+## Cara Penggunaan Program
+
+## Kontributor

@@ -88,19 +88,174 @@ Inheritance adalah kemampuan Class untuk mewarisi atribut dan metode dari Class 
 Mewarisi data dasar pengguna dan menambahkan atribut khusus bisnis seperti namaToko, noIzinUsaha, dan saldo toko.
 
     package model;
+    
     import enums.RolePengguna;
+    import enums.StatusAkun;
+    import enums.StatusVerifikasi;
+    import java.util.Date;
     
     public class Penjual extends Pengguna {
         private String namaToko;
+        private String deskripsiToko;
+        private String alamatToko;
+        private String kota;
+        private String kecamatan;
+        private String kodePos;
         private double saldo;
         private String noIzinUsaha;
+        private StatusVerifikasi statusVerifikasi;
+        private Date tanggalVerifikasi;
+        private StatusAkun statusAkun;
+        private Date tanggalDaftar;
     
-        public Penjual(int idPengguna, String namaLengkap, String email, String password, String noTelpon, RolePengguna role, String namaToko, double saldo, String noIzinUsaha /*...*/) {
-            // Memanggil konstruktor atribut dasar dari class Pengguna
+        public Penjual() {
+        }
+    
+        public Penjual(int idPengguna, String namaLengkap, String email, String password, String noTelpon, RolePengguna role, String namaToko, String deskripsiToko, String alamatToko, String kota, String kecamatan, String kodePos, double saldo, String noIzinUsaha, StatusVerifikasi statusVerifikasi, Date tanggalVerifikasi, StatusAkun statusAkun, Date tanggalDaftar) {
+            
             super(idPengguna, namaLengkap, email, password, noTelpon, role);
+            
             setNamaToko(namaToko);
+            this.deskripsiToko = deskripsiToko;
+            this.alamatToko = alamatToko;
+            this.kota = kota;
+            this.kecamatan = kecamatan;
+            this.kodePos = kodePos;
             setSaldo(saldo);
             setNoIzinUsaha(noIzinUsaha);
+            this.statusVerifikasi = statusVerifikasi;
+            this.tanggalVerifikasi = tanggalVerifikasi;
+            this.statusAkun = statusAkun;
+            this.tanggalDaftar = tanggalDaftar;
+        }
+    
+        public String getNamaToko() { 
+            return namaToko; 
+        }
+        
+        public void setNamaToko(String namaToko) {
+            if (validasiNamaToko(namaToko)) {
+                this.namaToko = namaToko;
+            }
+        }
+    
+        public String getDeskripsiToko() { 
+            return deskripsiToko; 
+        }
+        
+        public void setDeskripsiToko(String deskripsiToko) { 
+            this.deskripsiToko = deskripsiToko; 
+        }
+    
+        public String getAlamatToko() { 
+            return alamatToko; 
+        }
+        
+        public void setAlamatToko(String alamatToko) { 
+            this.alamatToko = alamatToko; 
+        }
+    
+        public String getKota() { 
+            return kota; 
+        }
+        
+        public void setKota(String kota) { 
+            this.kota = kota; 
+        }
+    
+        public String getKecamatan() { 
+            return kecamatan; 
+        }
+        
+        public void setKecamatan(String kecamatan) { 
+            this.kecamatan = kecamatan; 
+        }
+    
+        public String getKodePos() { 
+            return kodePos; 
+        }
+        
+        public void setKodePos(String kodePos) { 
+            this.kodePos = kodePos; 
+        }
+    
+        public double getSaldo() { 
+            return saldo; 
+        }
+        
+        public void setSaldo(double saldo) {
+            if (validasiSaldoPenjual(saldo)) {
+                this.saldo = saldo;
+            }
+        }
+    
+        public String getNoIzinUsaha() { 
+            return noIzinUsaha; 
+        }
+        
+        public void setNoIzinUsaha(String noIzinUsaha) {
+            if (validasiNoIzinUsaha(noIzinUsaha)) {
+                this.noIzinUsaha = noIzinUsaha;
+            }
+        }
+    
+        public StatusVerifikasi getStatusVerifikasi() { 
+            return statusVerifikasi; 
+        }
+        
+        public void setStatusVerifikasi(StatusVerifikasi statusVerifikasi) { 
+            this.statusVerifikasi = statusVerifikasi; 
+        }
+    
+        public Date getTanggalVerifikasi() { 
+            return tanggalVerifikasi; 
+        }
+        
+        public void setTanggalVerifikasi(Date tanggalVerifikasi) { 
+            this.tanggalVerifikasi = tanggalVerifikasi; 
+        }
+    
+        public StatusAkun getStatusAkun() { 
+            return statusAkun; 
+        }
+        
+        public void setStatusAkun(StatusAkun statusAkun) { 
+            this.statusAkun = statusAkun; 
+        }
+    
+        public Date getTanggalDaftar() { 
+            return tanggalDaftar; 
+        }
+        
+        public void setTanggalDaftar(Date tanggalDaftar) { 
+            this.tanggalDaftar = tanggalDaftar; 
+        }
+    
+        public boolean validasiNamaToko(String namaToko) {
+            if (namaToko != null && !namaToko.trim().isEmpty()) {
+                return true;
+            } else {
+                System.out.println("Peringatan: Nama toko tidak boleh kosong!");
+                return false;
+            }
+        }
+    
+        public boolean validasiSaldoPenjual(double saldo) {
+            if (saldo >= 0) {
+                return true;
+            } else {
+                System.out.println("Peringatan: Saldo penjual tidak boleh bernilai minus!");
+                return false;
+            }
+        }
+    
+        public boolean validasiNoIzinUsaha(String noIzinUsaha) {
+            if (noIzinUsaha != null && !noIzinUsaha.trim().isEmpty()) {
+                return true;
+            } else {
+                System.out.println("Peringatan: Nomor izin usaha wajib diisi!");
+                return false;
+            }
         }
     }
 
@@ -108,18 +263,141 @@ Mewarisi data dasar pengguna dan menambahkan atribut khusus bisnis seperti namaT
 Mewarisi data dasar pengguna dan menambahkan atribut khusus belanja seperti alamatPengiriman, saldo dompet pembeli, dan pin keamanan.
 
     package model;
+    
+    import enums.JenisKelamin;
     import enums.RolePengguna;
+    import enums.StatusAkun;
+    import java.util.Date;
     
     public class Pembeli extends Pengguna {
+        private Date tanggalLahir;
+        private JenisKelamin jenisKelamin;
+        private String kota;
+        private String kecamatan;
+        private String kodePos;
         private String alamatPengiriman;
         private double saldo;
         private String pin;
+        private StatusAkun statusAkun;
+        private Date tanggalDaftar;
     
-        public Pembeli(int idPengguna, String namaLengkap, String email, String password, String noTelpon, RolePengguna role, String alamatPengiriman, double saldo, String pin /*...*/) {
+        public Pembeli() {}
+    
+        public Pembeli(int idPengguna, String namaLengkap, String email, String password, String noTelpon, RolePengguna role, Date tanggalLahir, JenisKelamin jenisKelamin, String kota, String kecamatan, String kodePos, String alamatPengiriman, double saldo, String pin, StatusAkun statusAkun, Date tanggalDaftar) {
             super(idPengguna, namaLengkap, email, password, noTelpon, role);
+            this.tanggalLahir = tanggalLahir;
+            this.jenisKelamin = jenisKelamin;
+            this.kota = kota;
+            this.kecamatan = kecamatan;
+            this.kodePos = kodePos;
             this.alamatPengiriman = alamatPengiriman;
             setSaldo(saldo);
             setPin(pin);
+            this.statusAkun = statusAkun;
+            this.tanggalDaftar = tanggalDaftar;
+        }
+    
+        public Date getTanggalLahir() { 
+            return tanggalLahir; 
+        }
+        
+        public void setTanggalLahir(Date tanggalLahir) { 
+            this.tanggalLahir = tanggalLahir; 
+        }
+    
+        public JenisKelamin getJenisKelamin() { 
+            return jenisKelamin; 
+        }
+        
+        public void setJenisKelamin(JenisKelamin jenisKelamin) { 
+            this.jenisKelamin = jenisKelamin; 
+        }
+    
+        public String getKota() { 
+            return kota; 
+        }
+        
+        public void setKota(String kota) { 
+            this.kota = kota; 
+        }
+    
+        public String getKecamatan() { 
+            return kecamatan; 
+        }
+        
+        public void setKecamatan(String kecamatan) { 
+            this.kecamatan = kecamatan; 
+        }
+    
+        public String getKodePos() { 
+            return kodePos; 
+        }
+        
+        public void setKodePos(String kodePos) { 
+            this.kodePos = kodePos; 
+        }
+    
+        public String getAlamatPengiriman() { 
+            return alamatPengiriman; 
+        }
+        
+        public void setAlamatPengiriman(String alamatPengiriman) { 
+            this.alamatPengiriman = alamatPengiriman; 
+        }
+    
+        public double getSaldo() { 
+            return saldo; 
+        }
+        
+        public void setSaldo(double saldo) {
+            if (validasiSaldoPembeli(saldo)) {
+                this.saldo = saldo;
+            }
+        }
+    
+        public String getPin() { 
+            return pin; 
+        }
+        
+        public void setPin(String pin) {
+            if (validasiPin(pin)) {
+                this.pin = pin;
+            }
+        }
+    
+        public StatusAkun getStatusAkun() { 
+            return statusAkun; 
+        }
+        
+        public void setStatusAkun(StatusAkun statusAkun) { 
+            this.statusAkun = statusAkun; 
+        }
+    
+        public Date getTanggalDaftar() { 
+            return tanggalDaftar; 
+        }
+        
+        public void setTanggalDaftar(Date tanggalDaftar) { 
+            this.tanggalDaftar = tanggalDaftar; 
+        }
+    
+       
+        public boolean validasiSaldoPembeli(double saldo) {
+            if (saldo >= 0) {
+                return true;
+            } else {
+                System.out.println("Peringatan: Saldo pembeli tidak boleh bernilai minus!");
+                return false;
+            }
+        }
+    
+        public boolean validasiPin(String pin) {
+            if (pin != null && pin.matches("[0-9]{6}")) {
+                return true;
+            } else {
+                System.out.println("Peringatan: PIN harus berupa 6 digit angka!");
+                return false;
+            }
         }
     }
 
@@ -127,16 +405,39 @@ Mewarisi data dasar pengguna dan menambahkan atribut khusus belanja seperti alam
 Mewarisi data dasar pengguna dan menambahkan atribut otorisasi yaitu posisi pengelola.
 
     package model;
+    
     import enums.PosisiPengelola;
     import enums.RolePengguna;
     
     public class Pengelola extends Pengguna {
         private PosisiPengelola posisi;
     
+        public Pengelola() {}
+    
         public Pengelola(int idPengguna, String namaLengkap, String email, String password, String noTelpon, RolePengguna role, PosisiPengelola posisi) {
             super(idPengguna, namaLengkap, email, password, noTelpon, role);
             setPosisi(posisi);
         }
+    
+        public PosisiPengelola getPosisi() { 
+            return posisi; 
+        }
+        
+        public void setPosisi(PosisiPengelola posisi) {
+            if (validasiPosisi(posisi)) {
+                this.posisi = posisi;
+            }
+        }
+    
+        public boolean validasiPosisi(PosisiPengelola posisi) {
+            if (posisi != null) {
+                return true;
+            } else {
+                System.out.println(" Posisi pengelola tidak boleh kosong!");
+                return false;
+            }
+        }
+    }
     }
 
 

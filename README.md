@@ -1,28 +1,20 @@
 <div align="center">
 
-# LOKA
+# 🛍️🏪 LOKA
 ### Lapak Online Komunitas Lokal
 
 *Marketplace digital untuk memberdayakan UMKM lokal di Kota Samarinda*
+
+![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
+![Maven](https://img.shields.io/badge/Apache_Maven-C71A36?style=for-the-badge&logo=apachemaven&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+![Swing](https://img.shields.io/badge/Java_Swing-GUI-1f6feb?style=for-the-badge)
 
 </div>
 
 ---
 
-## Daftar Isi
-
-- [Deskripsi Singkat](#deskripsi-singkat)
-- [Fitur Utama Program](#fitur-utama-program)
-- [Tech Stack](#tech-stack)
-- [Perancangan Sistem](#perancangan-sistem)
-- [Struktur Folder/Package](#struktur-folderpackage)
-- [Penerapan OOP](#penerapan-oop)
-- [Cara Penggunaan Program](#cara-penggunaan-program)
-- [Kontributor](#kontributor)
-
----
-
-## Deskripsi Singkat
+## Deskripsi Singkat ─ ★ ˙ ̟ !!
 
 LOKA merupakan sebuah platform marketplace digital yang didedikasikan secara eksklusif untuk pemberdayaan Usaha Mikro, Kecil, dan Menengah (UMKM) lokal di wilayah Kota Samarinda. Platform ini dirancang untuk mengatasi keterbatasan jangkauan pemasaran dan mengelola operasional bisnis secara terstruktur melalui sistem digital. Dengan fitur dasbor penjual, pencarian katalog produk, integrasi pembayaran digital, hingga kalkulasi ongkos kirim berdasarkan jarak, LOKA memfasilitasi pertemuan antara penjual dan pembeli secara efisien.
 
@@ -36,7 +28,7 @@ Pengembangan sistem ini sejalan dengan komitmen terhadap *Sustainable Developmen
 
 ---
 
-## Fitur Utama Program
+## Fitur Utama Program ─ ★ ˙ ̟ !!
 
 ### 1. Autentikasi & Manajemen Hak Akses
 
@@ -93,7 +85,7 @@ Untuk menjaga kepercayaan dan transparansi ekosistem jual-beli lokal:
 
 ---
 
-## Tech Stack
+## Tech Stack ─ ★ ˙ ̟ !!
 
 | Kategori | Teknologi |
 |----------|-----------|
@@ -103,11 +95,11 @@ Untuk menjaga kepercayaan dan transparansi ekosistem jual-beli lokal:
 | Database | MySQL |
 | Library/Driver | MySQL Connector/J (JDBC) |
 | Arsitektur Sistem | MVC + DAO Pattern |
-| Tools Pengembangan | Apache NetBeans, Git & GitHub |
+| Tools Pengembangan | Apache NetBeans, Laragon, Figma, draw.io, Data Modeler |
 
 ---
 
-## Perancangan Sistem
+## Perancangan Sistem ─ ★ ˙ ̟ !!
 
 **ERD**
 
@@ -124,7 +116,7 @@ Untuk menjaga kepercayaan dan transparansi ekosistem jual-beli lokal:
 
 ---
 
-## Struktur Folder/Package
+## Struktur Folder/Package ─ ★ ˙ ̟ !!
 
 ```text
 LOKA/
@@ -141,7 +133,7 @@ LOKA/
 
 ---
 
-## Penerapan OOP
+## Penerapan OOP ─ ★ ˙ ̟ !!
 
 | Pilar | Penerapan | Lokasi |
 |-------|-----------|--------|
@@ -414,7 +406,7 @@ public List<Produk> ambilSemuaProduk(int idPenjual) {
 
 ---
 
-## Cara Penggunaan Program
+## Cara Penggunaan Program ─ ★ ˙ ̟ !!
 
 <!-- TODO: sesuaikan langkah-langkah di bawah dengan project kalian -->
 
@@ -422,14 +414,14 @@ public List<Produk> ambilSemuaProduk(int idPenjual) {
    ```bash
    git clone <url-repository>
    ```
-2. **Siapkan database MySQL**: buat database lalu impor file `.sql` milik project.
+2. **Siapkan database MySQL**: aktifkan **Laragon** (*Start All*), buat database, lalu impor file `.sql` milik project.
 3. **Atur koneksi database**: sesuaikan *host*, *username*, dan *password* pada class koneksi.
 4. **Jalankan aplikasi**: buka project di NetBeans, lakukan *Clean and Build*, lalu *Run* (atau gunakan `mvn clean install`).
 5. **Login** menggunakan akun Pembeli, Penjual, atau Pengelola sesuai peran yang ingin dicoba.
 
 ---
 
-## Kontributor
+## Kontributor ─ ★ ˙ ̟ !!
 
 | No | Nama | NIM | Kelas |
 |:--:|------|:---:|:-----:|
@@ -437,3 +429,11 @@ public List<Produk> ambilSemuaProduk(int idPenjual) {
 | 2 | Atha Rina Sarwahita | 2509116047 | B |
 | 3 | Naisyla Auliya Rahmi Putri | 2509116078 | B |
 | 4 | Qonitah Khansa' Ayu Madani A | 2509116113 | C |
+
+---
+
+<div align="center">
+
+Terima kasih sudah mampir di LOKA! 🛍️🏪
+
+</div>
